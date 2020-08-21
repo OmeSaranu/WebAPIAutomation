@@ -1,29 +1,13 @@
 import java.io.IOException;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Get200 {
+public class Get200 extends BaseClass {
 
-	private static final String BASEURI_ENDPOINT = "https://api.github.com";
-	CloseableHttpClient client;
-	CloseableHttpResponse response;
-
-	@BeforeMethod
-
-	public void setUp() {
-		client = HttpClientBuilder.create().build();
-	}
-
+	
 	@Test
 	public void baseURIReturns200StatusCode() throws ClientProtocolException, IOException {
 		HttpGet get = new HttpGet(BASEURI_ENDPOINT);
@@ -79,10 +63,7 @@ public class Get200 {
 		Assert.assertEquals(statusCode, 200);
 	}
 
-	@AfterMethod
-	public void tearDown() throws IOException {
-		client.close();
-		response.close();
+	
 	}
 
-}
+
