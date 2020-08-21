@@ -23,8 +23,18 @@ public void baseURIreturns200StatusCode() throws ClientProtocolException, IOExce
     
 	int statusCode = response.getStatusLine().getStatusCode();
 	
-	Assert.assertEquals(statusCode, 200);
+	Assert.assertEquals(statusCode, 200); 
+}
+
+@Test
+public void rateLimitreturns200StatusCode() throws ClientProtocolException, IOException
+{
+	HttpGet get = new HttpGet(BASEURI_ENDPOINT +"/rate_limit");
 	
- 
+	HttpResponse response = client.execute(get);
+    
+	int statusCode = response.getStatusLine().getStatusCode();
+	
+	Assert.assertEquals(statusCode, 200); 
 }
 }
