@@ -68,6 +68,16 @@ public class Get200 {
 
 		Assert.assertEquals(statusCode, 200);
 	}
+	@Test
+	public void eventsReturns200StatusCode() throws ClientProtocolException, IOException {
+		HttpGet get = new HttpGet(BASEURI_ENDPOINT + "/events");
+
+		HttpResponse response = client.execute(get);
+
+		int statusCode = response.getStatusLine().getStatusCode();
+
+		Assert.assertEquals(statusCode, 200);
+	}
 
 	@AfterMethod
 	public void tearDown() throws IOException {
